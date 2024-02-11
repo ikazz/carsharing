@@ -1,0 +1,92 @@
+2024-02-09 17:13:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" already exists; SQL statement:
+CREATE TABLE   COMPANY (ID INTEGER not NULL,  NAME VARCHAR(255),  PRIMARY KEY ( ID )) [42101-200]
+2024-02-10 21:21:42 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:C:/Users/isretenovic/IdeaProjects/Car Sharing1/Car Sharing/task/src/carsharing/db/carsharing.mv.db [1.4.200/7]" [50000-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convert(DbException.java:347)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:93)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:2877)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:481)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:402)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:3579)
+	at org.h2.mvstore.db.MVTableEngine$Store.open(MVTableEngine.java:170)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:103)
+	at org.h2.engine.Database.getPageStore(Database.java:2659)
+	at org.h2.engine.Database.open(Database.java:675)
+	at org.h2.engine.Database.openDatabase(Database.java:307)
+	at org.h2.engine.Database.<init>(Database.java:301)
+	at org.h2.engine.Engine.openSession(Engine.java:74)
+	at org.h2.engine.Engine.openSession(Engine.java:192)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:171)
+	at org.h2.engine.Engine.createSession(Engine.java:166)
+	at org.h2.engine.Engine.createSession(Engine.java:29)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:340)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:173)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:681)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:252)
+	at carsharing.CompanyDaoImpl.selectAll(CompanyDaoImpl.java:38)
+	at carsharing.Menu.companyManagerMenu(Menu.java:79)
+	at carsharing.Menu.managerMenu(Menu.java:62)
+	at carsharing.Menu.start(Menu.java:43)
+	at carsharing.App.main(App.java:7)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.hyperskill.hstest.testing.execution.MainMethodExecutor.invokeMain(MainMethodExecutor.java:160)
+	at org.hyperskill.hstest.testing.execution.MainMethodExecutor.lambda$launch$1(MainMethodExecutor.java:188)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "java.lang.IllegalStateException: The file is locked: nio:C:/Users/isretenovic/IdeaProjects/Car Sharing1/Car Sharing/task/src/carsharing/db/carsharing.mv.db [1.4.200/7]" [50000-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 40 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:C:/Users/isretenovic/IdeaProjects/Car Sharing1/Car Sharing/task/src/carsharing/db/carsharing.mv.db [1.4.200/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:950)
+	at org.h2.mvstore.FileStore.open(FileStore.java:166)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:381)
+	... 34 more
+Caused by: java.nio.channels.OverlappingFileLockException
+	at java.base/sun.nio.ch.FileLockTable.checkList(FileLockTable.java:229)
+	at java.base/sun.nio.ch.FileLockTable.add(FileLockTable.java:123)
+	at java.base/sun.nio.ch.FileChannelImpl.tryLock(FileChannelImpl.java:1321)
+	at org.h2.store.fs.FileNio.tryLock(FilePathNio.java:121)
+	at java.base/java.nio.channels.FileChannel.tryLock(FileChannel.java:1191)
+	at org.h2.mvstore.FileStore.open(FileStore.java:163)
+	... 35 more
+2024-02-11 14:52:21 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS CAR(ID INTEGER AUTO_INCREMENT PRIMARY KEY, NAME VARCHAR(255) NOT NULL UNIQUE, COMPANY_ID INTEGER NOT NULL, IS_AVAILABLE BOOLEAN, FOREIGN KEY (COMPANY_ID) REFERENCES COMPANY(ID))ON[*] DELETE CASCADE ON UPDATE CASCADE;"; SQL statement:
+CREATE TABLE IF NOT EXISTS CAR(ID INTEGER AUTO_INCREMENT PRIMARY KEY, NAME VARCHAR(255) NOT NULL UNIQUE, COMPANY_ID INTEGER NOT NULL, IS_AVAILABLE BOOLEAN, FOREIGN KEY (COMPANY_ID) REFERENCES COMPANY(ID))ON DELETE CASCADE ON UPDATE CASCADE; [42000-200]
+2024-02-11 14:52:21 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CAR" not found; SQL statement:
+CREATE TABLE IF NOT EXISTS CUSTOMER(ID INTEGER AUTO_INCREMENT PRIMARY KEY, NAME VARCHAR(255) NOT NULL UNIQUE, RENTED_CAR_ID INTEGER, FOREIGN KEY (RENTED_CAR_ID) REFERENCES CAR(ID)); [42102-200]
+2024-02-11 14:52:21 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS CAR(ID INTEGER AUTO_INCREMENT PRIMARY KEY, NAME VARCHAR(255) NOT NULL UNIQUE, COMPANY_ID INTEGER NOT NULL, IS_AVAILABLE BOOLEAN, FOREIGN KEY (COMPANY_ID) REFERENCES COMPANY(ID))ON[*] DELETE CASCADE ON UPDATE CASCADE;"; SQL statement:
+CREATE TABLE IF NOT EXISTS CAR(ID INTEGER AUTO_INCREMENT PRIMARY KEY, NAME VARCHAR(255) NOT NULL UNIQUE, COMPANY_ID INTEGER NOT NULL, IS_AVAILABLE BOOLEAN, FOREIGN KEY (COMPANY_ID) REFERENCES COMPANY(ID))ON DELETE CASCADE ON UPDATE CASCADE; [42000-200]
+2024-02-11 14:52:22 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CAR" not found; SQL statement:
+CREATE TABLE IF NOT EXISTS CUSTOMER(ID INTEGER AUTO_INCREMENT PRIMARY KEY, NAME VARCHAR(255) NOT NULL UNIQUE, RENTED_CAR_ID INTEGER, FOREIGN KEY (RENTED_CAR_ID) REFERENCES CAR(ID)); [42102-200]
+2024-02-11 14:53:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS CAR(ID INTEGER AUTO_INCREMENT PRIMARY KEY, NAME VARCHAR(255) NOT NULL UNIQUE, COMPANY_ID INTEGER NOT NULL, IS_AVAILABLE BOOLEAN, FOREIGN KEY (COMPANY_ID) REFERENCES COMPANY(ID))ON[*] DELETE CASCADE ON UPDATE CASCADE;"; SQL statement:
+CREATE TABLE IF NOT EXISTS CAR(ID INTEGER AUTO_INCREMENT PRIMARY KEY, NAME VARCHAR(255) NOT NULL UNIQUE, COMPANY_ID INTEGER NOT NULL, IS_AVAILABLE BOOLEAN, FOREIGN KEY (COMPANY_ID) REFERENCES COMPANY(ID))ON DELETE CASCADE ON UPDATE CASCADE; [42000-200]
+2024-02-11 14:53:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CAR" not found; SQL statement:
+CREATE TABLE IF NOT EXISTS CUSTOMER(ID INTEGER AUTO_INCREMENT PRIMARY KEY, NAME VARCHAR(255) NOT NULL UNIQUE, RENTED_CAR_ID INTEGER, FOREIGN KEY (RENTED_CAR_ID) REFERENCES CAR(ID)); [42102-200]
+2024-02-11 14:53:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS CAR(ID INTEGER AUTO_INCREMENT PRIMARY KEY, NAME VARCHAR(255) NOT NULL UNIQUE, COMPANY_ID INTEGER NOT NULL, IS_AVAILABLE BOOLEAN, FOREIGN KEY (COMPANY_ID) REFERENCES COMPANY(ID))ON[*] DELETE CASCADE ON UPDATE CASCADE;"; SQL statement:
+CREATE TABLE IF NOT EXISTS CAR(ID INTEGER AUTO_INCREMENT PRIMARY KEY, NAME VARCHAR(255) NOT NULL UNIQUE, COMPANY_ID INTEGER NOT NULL, IS_AVAILABLE BOOLEAN, FOREIGN KEY (COMPANY_ID) REFERENCES COMPANY(ID))ON DELETE CASCADE ON UPDATE CASCADE; [42000-200]
+2024-02-11 14:53:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CAR" not found; SQL statement:
+CREATE TABLE IF NOT EXISTS CUSTOMER(ID INTEGER AUTO_INCREMENT PRIMARY KEY, NAME VARCHAR(255) NOT NULL UNIQUE, RENTED_CAR_ID INTEGER, FOREIGN KEY (RENTED_CAR_ID) REFERENCES CAR(ID)); [42102-200]
+2024-02-11 14:57:35 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS CAR(ID INTEGER AUTO_INCREMENT PRIMARY KEY, NAME VARCHAR(255) NOT NULL UNIQUE, COMPANY_ID INTEGER NOT NULL, IS_AVAILABLE BOOLEAN, FOREIGN KEY (COMPANY_ID) REFERENCES COMPANY(ID))ON[*] DELETE CASCADE ON UPDATE CASCADE;"; SQL statement:
+CREATE TABLE IF NOT EXISTS CAR(ID INTEGER AUTO_INCREMENT PRIMARY KEY, NAME VARCHAR(255) NOT NULL UNIQUE, COMPANY_ID INTEGER NOT NULL, IS_AVAILABLE BOOLEAN, FOREIGN KEY (COMPANY_ID) REFERENCES COMPANY(ID))ON DELETE CASCADE ON UPDATE CASCADE; [42000-200]
+2024-02-11 14:57:35 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS CAR(ID INTEGER AUTO_INCREMENT PRIMARY KEY, NAME VARCHAR(255) NOT NULL UNIQUE, COMPANY_ID INTEGER NOT NULL, IS_AVAILABLE BOOLEAN, FOREIGN KEY (COMPANY_ID) REFERENCES COMPANY(ID))ON[*] DELETE CASCADE ON UPDATE CASCADE;"; SQL statement:
+CREATE TABLE IF NOT EXISTS CAR(ID INTEGER AUTO_INCREMENT PRIMARY KEY, NAME VARCHAR(255) NOT NULL UNIQUE, COMPANY_ID INTEGER NOT NULL, IS_AVAILABLE BOOLEAN, FOREIGN KEY (COMPANY_ID) REFERENCES COMPANY(ID))ON DELETE CASCADE ON UPDATE CASCADE; [42000-200]

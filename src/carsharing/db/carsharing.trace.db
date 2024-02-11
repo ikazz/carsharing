@@ -1,0 +1,60 @@
+2024-02-10 19:42:29 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE   COMPANY (ID INTEGER PRIMARY KEY AUTO_INCREMENT,  NAME VARCHAR(255) NOT NULL UNIQUE, [*]"; expected "identifier"; SQL statement:
+CREATE TABLE   COMPANY (ID INTEGER PRIMARY KEY AUTO_INCREMENT,  NAME VARCHAR(255) NOT NULL UNIQUE,  [42001-200]
+2024-02-10 19:43:59 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" already exists; SQL statement:
+CREATE TABLE COMPANY (ID INTEGER PRIMARY KEY AUTO_INCREMENT,  NAME VARCHAR(255) NOT NULL UNIQUE) [42101-200]
+2024-02-10 19:45:29 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" already exists; SQL statement:
+CREATE TABLE COMPANY (ID INTEGER PRIMARY KEY AUTO_INCREMENT, NAME VARCHAR(255) NOT NULL UNIQUE) [42101-200]
+2024-02-11 14:35:41 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Cannot drop "CAR" because "CONSTRAINT_52C" depends on it; SQL statement:
+DROP TABLE IF EXISTS CAR; [90107-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:576)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.command.ddl.DropTable.prepareDrop(DropTable.java:98)
+	at org.h2.command.ddl.DropTable.update(DropTable.java:124)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:198)
+	at org.h2.command.Command.executeUpdate(Command.java:251)
+	at org.h2.jdbc.JdbcStatement.executeUpdateInternal(JdbcStatement.java:168)
+	at org.h2.jdbc.JdbcStatement.executeUpdate(JdbcStatement.java:126)
+	at carsharing.Database.execute(Database.java:33)
+	at carsharing.Database.<init>(Database.java:24)
+	at carsharing.App.main(App.java:5)
+2024-02-11 14:43:24 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Cannot drop "CAR" because "CONSTRAINT_52C" depends on it; SQL statement:
+DROP TABLE IF EXISTS CAR; [90107-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:576)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.command.ddl.DropTable.prepareDrop(DropTable.java:98)
+	at org.h2.command.ddl.DropTable.update(DropTable.java:124)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:198)
+	at org.h2.command.Command.executeUpdate(Command.java:251)
+	at org.h2.jdbc.JdbcStatement.executeUpdateInternal(JdbcStatement.java:168)
+	at org.h2.jdbc.JdbcStatement.executeUpdate(JdbcStatement.java:126)
+	at carsharing.Database.execute(Database.java:33)
+	at carsharing.Database.<init>(Database.java:24)
+	at carsharing.App.main(App.java:5)
+2024-02-11 14:43:24 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS CAR(ID INTEGER AUTO_INCREMENT PRIMARY KEY, NAME VARCHAR(255) NOT NULL UNIQUE, COMPANY_ID INTEGER NOT NULL, IS_AVAILABLE BOOLEAN, FOREIGN KEY (COMPANY_ID) REFERENCES COMPANY(ID))ON[*] DELETE CASCADE ON UPDATE CASCADE;"; SQL statement:
+CREATE TABLE IF NOT EXISTS CAR(ID INTEGER AUTO_INCREMENT PRIMARY KEY, NAME VARCHAR(255) NOT NULL UNIQUE, COMPANY_ID INTEGER NOT NULL, IS_AVAILABLE BOOLEAN, FOREIGN KEY (COMPANY_ID) REFERENCES COMPANY(ID))ON DELETE CASCADE ON UPDATE CASCADE; [42000-200]
+2024-02-11 14:51:13 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS CAR(ID INTEGER AUTO_INCREMENT PRIMARY KEY, NAME VARCHAR(255) NOT NULL UNIQUE, COMPANY_ID INTEGER NOT NULL, IS_AVAILABLE BOOLEAN, FOREIGN KEY (COMPANY_ID) REFERENCES COMPANY(ID))ON[*] DELETE CASCADE ON UPDATE CASCADE;"; SQL statement:
+CREATE TABLE IF NOT EXISTS CAR(ID INTEGER AUTO_INCREMENT PRIMARY KEY, NAME VARCHAR(255) NOT NULL UNIQUE, COMPANY_ID INTEGER NOT NULL, IS_AVAILABLE BOOLEAN, FOREIGN KEY (COMPANY_ID) REFERENCES COMPANY(ID))ON DELETE CASCADE ON UPDATE CASCADE; [42000-200]
+2024-02-11 14:52:50 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS CAR(ID INTEGER AUTO_INCREMENT PRIMARY KEY, NAME VARCHAR(255) NOT NULL UNIQUE, COMPANY_ID INTEGER NOT NULL, IS_AVAILABLE BOOLEAN, FOREIGN KEY (COMPANY_ID) REFERENCES COMPANY(ID))ON[*] DELETE CASCADE ON UPDATE CASCADE;"; SQL statement:
+CREATE TABLE IF NOT EXISTS CAR(ID INTEGER AUTO_INCREMENT PRIMARY KEY, NAME VARCHAR(255) NOT NULL UNIQUE, COMPANY_ID INTEGER NOT NULL, IS_AVAILABLE BOOLEAN, FOREIGN KEY (COMPANY_ID) REFERENCES COMPANY(ID))ON DELETE CASCADE ON UPDATE CASCADE; [42000-200]
+2024-02-11 14:52:50 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CAR" not found; SQL statement:
+CREATE TABLE IF NOT EXISTS CUSTOMER(ID INTEGER AUTO_INCREMENT PRIMARY KEY, NAME VARCHAR(255) NOT NULL UNIQUE, RENTED_CAR_ID INTEGER, FOREIGN KEY (RENTED_CAR_ID) REFERENCES CAR(ID)); [42102-200]
+2024-02-11 14:55:27 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS CAR(ID INTEGER AUTO_INCREMENT PRIMARY KEY, NAME VARCHAR(255) NOT NULL UNIQUE, COMPANY_ID INTEGER NOT NULL, IS_AVAILABLE BOOLEAN, FOREIGN KEY (COMPANY_ID) REFERENCES COMPANY(ID))ON[*] DELETE CASCADE ON UPDATE CASCADE;"; SQL statement:
+CREATE TABLE IF NOT EXISTS CAR(ID INTEGER AUTO_INCREMENT PRIMARY KEY, NAME VARCHAR(255) NOT NULL UNIQUE, COMPANY_ID INTEGER NOT NULL, IS_AVAILABLE BOOLEAN, FOREIGN KEY (COMPANY_ID) REFERENCES COMPANY(ID))ON DELETE CASCADE ON UPDATE CASCADE; [42000-200]
+2024-02-11 14:55:27 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CAR" not found; SQL statement:
+CREATE TABLE IF NOT EXISTS CUSTOMER(ID INTEGER AUTO_INCREMENT PRIMARY KEY, NAME VARCHAR(255) NOT NULL UNIQUE, RENTED_CAR_ID INTEGER, FOREIGN KEY (RENTED_CAR_ID) REFERENCES CAR(ID)); [42102-200]
+2024-02-11 14:57:15 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS CAR(ID INTEGER AUTO_INCREMENT PRIMARY KEY, NAME VARCHAR(255) NOT NULL UNIQUE, COMPANY_ID INTEGER NOT NULL, IS_AVAILABLE BOOLEAN, FOREIGN KEY (COMPANY_ID) REFERENCES COMPANY(ID))ON[*] DELETE CASCADE ON UPDATE CASCADE;"; SQL statement:
+CREATE TABLE IF NOT EXISTS CAR(ID INTEGER AUTO_INCREMENT PRIMARY KEY, NAME VARCHAR(255) NOT NULL UNIQUE, COMPANY_ID INTEGER NOT NULL, IS_AVAILABLE BOOLEAN, FOREIGN KEY (COMPANY_ID) REFERENCES COMPANY(ID))ON DELETE CASCADE ON UPDATE CASCADE; [42000-200]
